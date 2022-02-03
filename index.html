@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navbar</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            background-color: #f1f5f8;
+        }
+        
+        .topbar {
+            background-color: white;
+            box-shadow: 0 5px 15px #0000001c;
+            transition: 0.5s ease-in-out;
+        }
+        
+        .active {
+            width: 40%!important;
+        }
+        
+        .container {
+            margin: 0px auto 0px;
+            width: 90%;
+        }
+        
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        
+        .navbar-logo img {
+            height: 40px;
+        }
+        
+        .navbar .navbar-menu ul {
+            list-style-type: none;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .navbar .navbar-menu ul li a {
+            text-decoration: none;
+            text-transform: capitalize;
+            font-size: 16px;
+            color: #324d67;
+            letter-spacing: 3px;
+            padding: 8px;
+            transition: 0.3s ease-in-out;
+        }
+        
+        .navbar .navbar-menu ul li a:hover {
+            color: #49a6e9;
+        }
+        
+        .navbar-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .navbar-icons a {
+            color: #49a6e9;
+        }
+        
+        .navbar-icons a:hover {
+            color: #0094ff;
+        }
+        
+        .topbarIcon {
+            display: none;
+        }
+        
+        .navIcon {
+            float: right;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            width: 45px;
+            border: 1px solid black;
+            margin: 15px 15px 0px 0px;
+        }
+        
+        .navIcon i {
+            transition: 0.3s ease-in-out;
+        }
+        
+        .icon-rotate {
+            transform: rotate(45deg);
+        }
+        
+        .cancel-btn {
+            display: none;
+            font-size: 22px;
+            color: red;
+        }
+        
+        @media screen and (max-width: 1024px) {
+            .container {
+                width: 95%;
+            }
+        }
+        
+        @media screen and (max-width: 800px) {
+            .navbar {
+                display: block;
+                height: auto;
+            }
+            .topbarIcon {
+                display: block;
+            }
+            .topbar {
+                width: 0%;
+                overflow: hidden;
+                position: absolute;
+                height: 100vh;
+            }
+            .navbar-logo {
+                margin: 15px 7px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .cancel-btn {
+                display: inline-block;
+            }
+            .navbar .navbar-menu ul {
+                display: grid;
+                gap: unset;
+            }
+            .navbar .navbar-menu ul li {
+                margin: 5px 0px;
+            }
+            .navbar .navbar-menu ul li a {
+                display: block;
+                padding: 15px 10px;
+                font-weight: 600;
+                font-size: 16px;
+            }
+            .navbar-icons {
+                position: absolute;
+                bottom: 30px;
+                left: 0;
+                right: 0;
+                width: fit-content;
+                margin: auto;
+            }
+            .navbar-icons a {
+                font-size: 20px;
+            }
+        }
+        
+        @media screen and (max-width: 650px) {
+            .active {
+                width: 30%!important;
+            }
+            .navbar-logo img {
+                height: 25px;
+            }
+            .cancel-btn {
+                font-size: 16px;
+            }
+            .navbar .navbar-menu ul li a {
+                padding: 5px 10px;
+                font-size: 13px;
+            }
+            .navbar-icons a {
+                font-size: 13px;
+            }
+            .navIcon {
+                height: 30px;
+                width: 30px;
+            }
+            .navIcon i {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar" id="topBar">
+        <div class="container">
+            <div class="navbar">
+                <div class="navbar-logo">
+                    <img src="https://vanilla-js-basic-project-4-navbar.netlify.app/logo.svg" alt="logo">
+                    <i class="far fa-window-close cancel-btn" id="navBarClose"></i>
+                </div>
+                <div class="navbar-menu">
+                    <ul>
+                        <li><a href="#">home</a></li>
+                        <li><a href="#">about</a></li>
+                        <li><a href="#">projects</a></li>
+                        <li><a href="#">contact</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-sketch"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="topbarIcon">
+        <div class="navIcon" id="menuIcon">
+            <i class="fas fa-bars" id="menuIconBar"></i>
+        </div>
+    </div>
+    <script>
+        var menuIcon = document.getElementById("menuIcon");
+        var menuIconBars = document.getElementById("menuIconBar");
+        var topBar = document.getElementById("topBar");
+        var cancelTopBar = document.getElementById("navBarClose");
+        menuIcon.addEventListener("click", toogleNavBar)
+        cancelTopBar.addEventListener("click", toogleNavBar)
+
+        function toogleNavBar() {
+            menuIconBars.classList.toggle("icon-rotate");
+            topBar.classList.toggle("active");
+        }
+    </script>
+</body>
+
+</html>
